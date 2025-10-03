@@ -505,8 +505,12 @@ Similar to the `theme()` function in `ggplot2`, the `tm_layout()` function in `t
 ```{r}
 
 tm_shape(world_vector) +
-  tm_polygons(fill = "wb_income_region",
+  tm_polygons(# fill = "wb_income_region",
+             fill = "gdp_per_cap", 
           #fill.scale = tm_scale(values = viridisLite::plasma(5)),
+        #  fill.scale = tm.scale(breaks = c(0, 5000, 10000, 20000, 40000, 80000)) + 
+        fill.scale = tm_scale(breaks = c(0, 5000, 20000, 50000, Inf), 
+                              labels = c("Low", "Medium", "High", "Very High")),
           fill.legend  = tm_legend(title = "Regional Income")) +
   tm_title(text = "Global income",
             frame = TRUE)+ 
@@ -531,7 +535,7 @@ tmap_mode("view")
 
 tm_shape(world_vector) +
   tm_polygons(fill = "gdp_per_cap",
-          fill.legend = tm_legend(title = "GDP per capita"))
+          fill.legend = tm_legend(title = "GDP per capita")) 
 
 ```
 
@@ -550,11 +554,10 @@ Maps can be stored as objects for for adding additional layers and saving progra
 ```{r}
 
 map1 <- tm_shape(world_vector) +
-  tm_polygons(fill = "life_expectancy", 
-              fill.scale = tm_scale(values =  viridis(8)),
-              fill.legend = tm_legend(title  = "Life Expectancy (years)"))
+  tm_polygons(fill = "gdp_per_cap",
+          fill.legend = tm_legend(title = "GDP per capita")) 
 
-tmap_save(map1, here("week1", "tmap-example.png"))
+tmap_save(map1, here::here("week1", "tmap-example.png"))
 
 ```
 
