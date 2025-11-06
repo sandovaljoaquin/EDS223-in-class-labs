@@ -407,4 +407,32 @@ tmap_arrange(map1, map3, map_ndwi)
 
 ```
 
+Normalized Difference Moisture Index: vegetation index used in RS to measure and monitor water content in vegetation 
+
+NDMI = (NIR - SWIR)/ (NIR + SWIR)
+
+- measuring mositure within plant levels: 
+higher values = more water content in vegetation 
+
+* Useful for drought monitoring and fire risk 
+```{r}
+# Define NDMI as normalized difference between nir and swir bands 
+ndmi_fun <- function(nir, swir){
+  (nir - swir)/ (nir + swir)
+}
+
+# Apply NDWI function to landsat bands 3 & 4 
+
+ndmi_rast <- lapp(L7[[c(4,5)]], fun = ndmi_fun)
+
+map_ndmi <- tm_shape(ndmi_rast) + 
+  tm_raster(
+    col.scale = tm_scale_continuous(values = "brewer.blues"), 
+    col.legend = tm_legend(title = "NDMI", 
+                           orientation = "portrait")
+  ) + 
+  tm_title(text = "NDMI")
+
+map_ndmi
+```
 
