@@ -16,9 +16,9 @@ Week 5: Explore operations that rely on interactions between vector and raster d
 
 Week 6: Operations that rely on interactions between vector and raster data. Convert raster data into vector data and create false color imagery.
 
-Week 7: 
+Week 7: Operations that rely on interactions between vector and raster data. How to convert raster data into vector data and explore creating false color imagery.
 
-Week 8: 
+Week 8: Classifying remotely sensed imagery into land cover classes using supervised and unsupervised classification.
 
 Week 9: 
 
