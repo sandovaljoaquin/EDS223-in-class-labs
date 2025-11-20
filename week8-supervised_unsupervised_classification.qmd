@@ -393,6 +393,16 @@ landsat_df |>
   knitr::kable(digits = 2, 
                caption = "Mean Spectral Values by Cluster")
 
+# Cluster 3 = green vegetation: Large difference between NIR and red band
+# Cluster 4 = water: 
+# Cluster 1 = soil/dead grass  :higher values across bands 
+# Cluster 2 = urban areas: moderate values across bands 
+
+levels(SB_classification_kmeans) <- data.frame(
+  cluster = 1:4, 
+  landcover = c("soil/dead grass", "urban", "green vegetation", "water")
+)
+
 ```
 
 ## 5. Plot Results
